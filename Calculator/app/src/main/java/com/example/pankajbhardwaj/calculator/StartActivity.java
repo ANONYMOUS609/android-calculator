@@ -42,18 +42,22 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
                     tv.setText(str.substring(0,str.length() - 1));
                 } else
                     tv.setText("");
+                if (str.charAt(str.length() - 1) == '.') {
+                    Button btnno = (Button) findViewById(R.id.btndecimal);
+                    btnno.setVisibility(View.VISIBLE);
+                }
             }
         });
-        Button btnno = (Button) findViewById(R.id.btnno);
+        Button btnno = (Button) findViewById(R.id.btndecimal);
         Button btnno1 = (Button) findViewById(R.id.btnno1);
         Button btnno2 = (Button) findViewById(R.id.btnno2);
-        btnno.setVisibility(View.INVISIBLE);
         btnno1.setVisibility(View.INVISIBLE);
         btnno2.setVisibility(View.INVISIBLE);
         map.put(btna, false);
         map.put(btns, false);
         map.put(btnm, false);
         map.put(btnd, false);
+        btnno.setOnClickListener(this);
         btn0.setOnClickListener(this);
         btn1.setOnClickListener(this);
         btn2.setOnClickListener(this);
@@ -74,6 +78,8 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
                 tv1.setText(tv.getText());
                 tv.setText("");
                 map.put(btna ,true);
+                Button btnn = (Button) findViewById(R.id.btndecimal);
+                btnn.setVisibility(View.VISIBLE);
             }
         });
         btns.setOnClickListener(new View.OnClickListener() {
@@ -85,6 +91,8 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
                 tv1.setText(tv.getText());
                 tv.setText("");
                 map.put(btns ,true);
+                Button btnn = (Button) findViewById(R.id.btndecimal);
+                btnn.setVisibility(View.VISIBLE);
             }
         });
         btnd.setOnClickListener(new View.OnClickListener() {
@@ -96,6 +104,8 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
                 tv1.setText(tv.getText());
                 tv.setText("");
                 map.put(btnd ,true);
+                Button btnn = (Button) findViewById(R.id.btndecimal);
+                btnn.setVisibility(View.VISIBLE);
             }
         });
         btnm.setOnClickListener(new View.OnClickListener() {
@@ -107,12 +117,16 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
                 tv1.setText(tv.getText());
                 tv.setText("");
                 map.put(btnm ,true);
+                Button btnn = (Button) findViewById(R.id.btndecimal);
+                btnn.setVisibility(View.VISIBLE);
             }
         });
         btne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 equal(map);
+                Button btnn = (Button) findViewById(R.id.btndecimal);
+                btnn.setVisibility(View.INVISIBLE);
             }
         });
     }
@@ -220,6 +234,11 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
                     break;
                 case R.id.btn9:
                     ch = '9';
+                    break;
+                case R.id.btndecimal:
+                    ch = '.';
+                    Button btnno = (Button) findViewById(R.id.btndecimal);
+                    btnno.setVisibility(View.INVISIBLE);
                     break;
             }
             tv.setText(str + ch);
