@@ -202,6 +202,8 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
         String str = tv.getText().toString();
         if (v.getId() == R.id.btnc) {
             tv.setText("");
+            Button btnno = (Button) findViewById(R.id.btndecimal);
+            btnno.setVisibility(View.VISIBLE);
         } else {
             char ch = ' ';
             switch (v.getId()) {
