@@ -34,7 +34,23 @@
         android:layout_marginRight="10dp"
         android:layout_marginBottom="20dp"
         android:columnCount="4">
-
+        <Button
+            android:id="@+id/btnno"
+            android:textSize="30sp"
+            android:layout_height="60dp" />
+        <Button
+            android:id="@+id/btnno1"
+            android:textSize="30sp"
+            android:layout_height="60dp" />
+        <Button
+            android:id="@+id/btnno2"
+            android:textSize="30sp"
+            android:layout_height="60dp" />
+        <Button
+            android:id="@+id/btndel"
+            android:text="DEL"
+            android:textSize="30sp"
+            android:layout_height="60dp" />
         <Button
             android:id="@+id/btn1"
             android:text="1"

@@ -32,6 +32,24 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
         Button btnd = (Button) findViewById(R.id.btndiv);
         Button btnm = (Button) findViewById(R.id.btnmul);
         Button btne = (Button) findViewById(R.id.btne);
+        Button btndel = (Button) findViewById(R.id.btndel);
+        btndel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TextView tv = (TextView) findViewById(R.id.txtv);
+                String str = tv.getText().toString();
+                if (str.length() >= 1) {
+                    tv.setText(str.substring(0,str.length() - 1));
+                } else
+                    tv.setText("");
+            }
+        });
+        Button btnno = (Button) findViewById(R.id.btnno);
+        Button btnno1 = (Button) findViewById(R.id.btnno1);
+        Button btnno2 = (Button) findViewById(R.id.btnno2);
+        btnno.setVisibility(View.INVISIBLE);
+        btnno1.setVisibility(View.INVISIBLE);
+        btnno2.setVisibility(View.INVISIBLE);
         map.put(btna, false);
         map.put(btns, false);
         map.put(btnm, false);
@@ -48,31 +66,9 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
         btn8.setOnClickListener(this);
         btn9.setOnClickListener(this);
         btnc.setOnClickListener(this);
-        btne.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TextView tv = (TextView) findViewById(R.id.txtv);
-                TextView tv1 = (TextView) findViewById(R.id.txtsmall);
-                String one = tv.getText().toString();
-                String two = tv1.getText().toString();
-                int resone = 0;
-                int restwo = 1;
-                int ans = resone + restwo;
-                tv.setText(ans+"");
-                tv1.setText("");
-            }
-        });
-        /*btna.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                for (Button btn : set) {
-                    if (map.get(btn)) {
-
-                    }
-                }
-            }
-        });*/
     }
+
+    
 
     @Override
     public void onClick(View v) {
