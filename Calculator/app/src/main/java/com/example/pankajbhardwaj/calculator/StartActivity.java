@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
@@ -37,14 +39,25 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onClick(View v) {
                 TextView tv = (TextView) findViewById(R.id.txtv);
+                TextView tv1 = (TextView) findViewById(R.id.txtsmall);
+                String st = tv1.getText().toString();
                 String str = tv.getText().toString();
-                if (str.length() >= 1) {
-                    tv.setText(str.substring(0,str.length() - 1));
-                } else
+                if (str == null || str.isEmpty()) {
+                    if (st.isEmpty() || st == null)
                     tv.setText("");
-                if (str.charAt(str.length() - 1) == '.') {
-                    Button btnno = (Button) findViewById(R.id.btndecimal);
-                    btnno.setVisibility(View.VISIBLE);
+                    else {
+                        tv.setText(st);
+                        tv1.setText("");
+                    }
+                } else {
+                    if (str.charAt(str.length() - 1) == '.') {
+                        Button btnno = (Button) findViewById(R.id.btndecimal);
+                        btnno.setVisibility(View.VISIBLE);
+                    }
+                    if (str.length() >= 1) {
+                        tv.setText(str.substring(0, str.length() - 1));
+                    } else
+                        tv.setText("");
                 }
             }
         });
@@ -77,7 +90,7 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
                 equal(map);
                 tv1.setText(tv.getText());
                 tv.setText("");
-                map.put(btna ,true);
+                map.put(btna, true);
                 Button btnn = (Button) findViewById(R.id.btndecimal);
                 btnn.setVisibility(View.VISIBLE);
             }
@@ -90,7 +103,7 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
                 equal(map);
                 tv1.setText(tv.getText());
                 tv.setText("");
-                map.put(btns ,true);
+                map.put(btns, true);
                 Button btnn = (Button) findViewById(R.id.btndecimal);
                 btnn.setVisibility(View.VISIBLE);
             }
@@ -103,7 +116,7 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
                 equal(map);
                 tv1.setText(tv.getText());
                 tv.setText("");
-                map.put(btnd ,true);
+                map.put(btnd, true);
                 Button btnn = (Button) findViewById(R.id.btndecimal);
                 btnn.setVisibility(View.VISIBLE);
             }
@@ -116,7 +129,7 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
                 equal(map);
                 tv1.setText(tv.getText());
                 tv.setText("");
-                map.put(btnm ,true);
+                map.put(btnm, true);
                 Button btnn = (Button) findViewById(R.id.btndecimal);
                 btnn.setVisibility(View.VISIBLE);
             }
@@ -131,7 +144,7 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
         });
     }
 
-    public void equal(HashMap<Button,Boolean> map) {
+    public void equal(HashMap<Button, Boolean> map) {
         Set<Button> set = map.keySet();
         for (Button btn : set) {
             if (map.get(btn)) {
@@ -151,7 +164,7 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
                             numtwo = Double.parseDouble(strtwo);
                         }
                         result = numone + numtwo;
-                        tv.setText(result+"");
+                        tv.setText(result + "");
                         tv1.setText("");
                         break;
                     case R.id.btnminus:
@@ -162,10 +175,11 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
                             numtwo = Double.parseDouble(strtwo);
                         }
                         result = numtwo - numone;
-                        tv.setText(result+"");
+                        tv.setText(result + "");
                         tv1.setText("");
                         break;
                     case R.id.btnmul:
+                        numone = 1;
                         if (str.length() != 0) {
                             numone = Double.parseDouble(str);
                         }
@@ -173,10 +187,11 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
                             numtwo = Double.parseDouble(strtwo);
                         }
                         result = numtwo * numone;
-                        tv.setText(result+"");
+                        tv.setText(result + "");
                         tv1.setText("");
                         break;
                     case R.id.btndiv:
+                        numone = 1;
                         if (str.length() != 0) {
                             numone = Double.parseDouble(str);
                         }
@@ -184,7 +199,7 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
                             numtwo = Double.parseDouble(strtwo);
                         }
                         result = numtwo / numone;
-                        tv.setText(result+"");
+                        tv.setText(result + "");
                         tv1.setText("");
                         break;
                 }
@@ -192,7 +207,7 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
             }
         }
         for (Button btn : set) {
-            map.put(btn,false);
+            map.put(btn, false);
         }
     }
 
@@ -202,6 +217,8 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
         String str = tv.getText().toString();
         if (v.getId() == R.id.btnc) {
             tv.setText("");
+            TextView tv1 = (TextView) findViewById(R.id.txtsmall);
+            tv1.setText("");
             Button btnno = (Button) findViewById(R.id.btndecimal);
             btnno.setVisibility(View.VISIBLE);
         } else {
