@@ -85,6 +85,7 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
         btna.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                TextView op = (TextView) findViewById(R.id.op);
                 TextView tv = (TextView) findViewById(R.id.txtv);
                 TextView tv1 = (TextView) findViewById(R.id.txtsmall);
                 equal(map);
@@ -93,12 +94,14 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
                 map.put(btna, true);
                 Button btnn = (Button) findViewById(R.id.btndecimal);
                 btnn.setVisibility(View.VISIBLE);
+                op.setText("+");
             }
         });
         btns.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 TextView tv = (TextView) findViewById(R.id.txtv);
+                TextView op = (TextView) findViewById(R.id.op);
                 TextView tv1 = (TextView) findViewById(R.id.txtsmall);
                 equal(map);
                 tv1.setText(tv.getText());
@@ -106,6 +109,7 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
                 map.put(btns, true);
                 Button btnn = (Button) findViewById(R.id.btndecimal);
                 btnn.setVisibility(View.VISIBLE);
+                op.setText("-");
             }
         });
         btnd.setOnClickListener(new View.OnClickListener() {
@@ -119,6 +123,8 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
                 map.put(btnd, true);
                 Button btnn = (Button) findViewById(R.id.btndecimal);
                 btnn.setVisibility(View.VISIBLE);
+                TextView op = (TextView) findViewById(R.id.op);
+                op.setText("/");
             }
         });
         btnm.setOnClickListener(new View.OnClickListener() {
@@ -132,6 +138,8 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
                 map.put(btnm, true);
                 Button btnn = (Button) findViewById(R.id.btndecimal);
                 btnn.setVisibility(View.VISIBLE);
+                TextView op = (TextView) findViewById(R.id.op);
+                op.setText("*");
             }
         });
         btne.setOnClickListener(new View.OnClickListener() {
@@ -140,6 +148,8 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
                 equal(map);
                 Button btnn = (Button) findViewById(R.id.btndecimal);
                 btnn.setVisibility(View.INVISIBLE);
+                TextView op = (TextView) findViewById(R.id.op);
+                op.setText("");
             }
         });
     }
